@@ -1,4 +1,4 @@
-package com.ndcoding.ndccalculator
+package com.ndcoding.ndccalculator.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

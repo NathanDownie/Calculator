@@ -4,36 +4,82 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.ndcoding.ndccalculator.theme.NDCCalculatorTheme
 import com.ndcoding.ndccalculator.ui.Calculator
 import com.ndcoding.ndccalculator.ui.CalculatorAppBar
-import com.ndcoding.ndccalculator.theme.NDCCalculatorTheme
+import com.ndcoding.ndccalculator.ui.Scientific
+import com.ndcoding.ndccalculator.ui.Settings
+import com.ndcoding.ndccalculator.viewmodel.CalculatorViewModel
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.statusBarColor = Color.Black.toArgb()
+
         setContent {
             NDCCalculatorTheme {
+                // Rest of your code...
+                val navController = rememberNavController()
                 val viewModel = viewModel<CalculatorViewModel>()
                 val state = viewModel.state
                 val buttonSpacing = 2.dp
 
-                Column {
-                    CalculatorAppBar()
-                    Calculator(
-                        state = state,
-                        onAction = viewModel::onAction,
-                        buttonSpacing = buttonSpacing,
+                // Rest of your code...
+                NavHost(navController, startDestination = "Calculator") {
+                    composable("Calculator") {
+                        Calculator(
+                            state = state,
+                            onAction = viewModel::onAction,
+                            buttonSpacing = buttonSpacing,
                         )
+                    }
+                    composable("Scientific") {
+                        Scientific()
+                    }
+                    composable("Settings") {
+                        Settings()
+                    }
+                }
+                Column {
+                    CalculatorAppBar(navController = navController)
+                    NavHost(navController, startDestination = "Calculator") {
+                        composable("Calculator") {
+                            Calculator(
+                                state = state,
+                                onAction = viewModel::onAction,
+                                buttonSpacing = buttonSpacing,
+                            )
+                        }
 
+
+                        composable("Calculator") {
+                            Calculator(
+                                state = state,
+                                onAction = viewModel::onAction,
+                                buttonSpacing = buttonSpacing,
+                            )
+                        }
+                        composable("Scientific") {
+                            Scientific()
+                        }
+                        composable("Settings") {
+                            Settings()
+                        }
+                    }
                 }
             }
         }
     }
 }
-
-
 
 
 

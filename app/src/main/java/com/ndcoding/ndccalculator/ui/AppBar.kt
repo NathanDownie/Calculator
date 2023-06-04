@@ -3,6 +3,7 @@ package com.ndcoding.ndccalculator.ui
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.DropdownMenu
@@ -30,7 +31,8 @@ fun CalculatorAppBar(navController: NavController) {
     var expandedState by remember { mutableStateOf(false) }
     var selectedIndex by remember { mutableIntStateOf(-1) }
 
-    val menuItems = listOf("Scientific Calculator", "Settings")
+    val menuItems = listOf("Calculator", "Scientific", "Settings")
+    var pageTitle by remember { mutableStateOf("Calculator") }
 
     Box(
         modifier = Modifier
@@ -40,7 +42,9 @@ fun CalculatorAppBar(navController: NavController) {
     ) {
         IconButton(
             onClick = { expandedState = !expandedState },
-            modifier = Modifier.align(Alignment.CenterStart)
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .offset(y = (-10).dp)
         ) {
             Icon(
                 imageVector = Icons.Default.Menu,
@@ -48,6 +52,12 @@ fun CalculatorAppBar(navController: NavController) {
                 tint = Color.White
             )
         }
+            Text(
+                text = pageTitle,
+                color = Color.White,
+                modifier = Modifier.padding(start = 40.dp, top = 3.dp, end = 0.dp, bottom = 0.dp)
+            )
+
 
         Box(
             modifier = Modifier.align(Alignment.CenterStart)
@@ -67,8 +77,18 @@ fun CalculatorAppBar(navController: NavController) {
                             expandedState = false
 
                             when (index) {
-                                0 -> navController.navigate("Scientific")
-                                1 -> navController.navigate("Settings")
+                                0 -> {
+                                    pageTitle = "Calculator"
+                                    navController.navigate("Calculator")
+                                }
+                                1 -> {
+                                    pageTitle = "Scientific"
+                                    navController.navigate("Scientific")
+                                }
+                                2 -> {
+                                    pageTitle = "Settings"
+                                    navController.navigate("Settings")
+                                }
                             }
                         }
                     ) {
@@ -79,6 +99,7 @@ fun CalculatorAppBar(navController: NavController) {
         }
     }
 }
+
 
 
 

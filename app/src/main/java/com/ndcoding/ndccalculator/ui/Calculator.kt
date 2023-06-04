@@ -44,13 +44,14 @@ fun Calculator(
         modifier = Modifier
             .fillMaxSize()
             .background(Black)
+
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(8.dp)
                 .clip(RoundedCornerShape(16.dp))
-                .background(Color.Transparent)
+                .background(Color.Black)
         ) {
             Column(
                 modifier = Modifier.fillMaxSize(),

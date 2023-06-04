@@ -52,7 +52,7 @@ fun RectangleCalculatorButton(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxWidth(0.1f) // Adjust the fillMaxWidth value to make the button wider
-            .height(54.dp)
+            .height(45.dp)
             .background(Color.Transparent, RoundedCornerShape(8.dp))
             .clickable { onClick() }
             .then(modifier)
