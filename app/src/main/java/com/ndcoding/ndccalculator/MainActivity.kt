@@ -14,7 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ndcoding.ndccalculator.theme.NDCCalculatorTheme
 import com.ndcoding.ndccalculator.ui.Calculator
 import com.ndcoding.ndccalculator.ui.CalculatorAppBar
-import com.ndcoding.ndccalculator.ui.Scientific
+import com.ndcoding.ndccalculator.ui.ScientificCalculator
 import com.ndcoding.ndccalculator.ui.Settings
 import com.ndcoding.ndccalculator.viewmodel.CalculatorViewModel
 
@@ -38,12 +38,16 @@ class MainActivity : ComponentActivity() {
                     composable("Calculator") {
                         Calculator(
                             state = state,
-                            onAction = viewModel::onAction,
+                            ignoredOnAction = viewModel::onAction,
                             buttonSpacing = buttonSpacing,
                         )
                     }
                     composable("Scientific") {
-                        Scientific()
+                        ScientificCalculator(
+                            state = state,
+                            ignoredOnAction = viewModel::onAction,
+                            buttonSpacing = buttonSpacing,
+                        )
                     }
                     composable("Settings") {
                         Settings()
@@ -55,7 +59,7 @@ class MainActivity : ComponentActivity() {
                         composable("Calculator") {
                             Calculator(
                                 state = state,
-                                onAction = viewModel::onAction,
+                                ignoredOnAction = viewModel::onAction,
                                 buttonSpacing = buttonSpacing,
                             )
                         }
@@ -64,12 +68,16 @@ class MainActivity : ComponentActivity() {
                         composable("Calculator") {
                             Calculator(
                                 state = state,
-                                onAction = viewModel::onAction,
+                                ignoredOnAction = viewModel::onAction,
                                 buttonSpacing = buttonSpacing,
                             )
                         }
                         composable("Scientific") {
-                            Scientific()
+                            ScientificCalculator(
+                                state = state,
+                                ignoredOnAction = viewModel::onAction,
+                                buttonSpacing = buttonSpacing,
+                            )
                         }
                         composable("Settings") {
                             Settings()

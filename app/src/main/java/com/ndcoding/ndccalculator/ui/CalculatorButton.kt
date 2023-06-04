@@ -22,7 +22,7 @@ import com.ndcoding.ndccalculator.theme.White
 fun CalculatorButton(
     symbol: String,
     modifier: Modifier,
-    onClick: () -> Unit
+    ignoredOnClick: () -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center,
@@ -30,7 +30,7 @@ fun CalculatorButton(
             .padding(1.dp)
             .aspectRatio(1.5f)
             .background(Color.Transparent)
-            .clickable { onClick() }
+            .clickable { ignoredOnClick() }
             .then(modifier)
     ) {
         Text(
@@ -46,7 +46,7 @@ fun CalculatorButton(
 fun RectangleCalculatorButton(
     symbol: String,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    ignoredOnClick: () -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center,
@@ -54,7 +54,7 @@ fun RectangleCalculatorButton(
             .fillMaxWidth(0.1f) // Adjust the fillMaxWidth value to make the button wider
             .height(45.dp)
             .background(Color.Transparent, RoundedCornerShape(8.dp))
-            .clickable { onClick() }
+            .clickable { ignoredOnClick() }
             .then(modifier)
     ) {
         Text(
@@ -62,6 +62,30 @@ fun RectangleCalculatorButton(
             fontSize = 32.sp,
             color = Color.White,
             style = MaterialTheme.typography.h4
+        )
+    }
+}
+
+@Composable
+fun ScientificCalculatorButton(
+    symbol: String,
+    modifier: Modifier,
+    ignoredOnClick: () -> Unit
+) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier
+            .padding(1.dp)
+            .aspectRatio(1.5f)
+            .background(Color.Transparent)
+            .clickable { ignoredOnClick() }
+            .then(modifier)
+    ) {
+        Text(
+            text = symbol,
+            fontSize = 15.sp,
+            color = White,
+            style = MaterialTheme.typography.h3
         )
     }
 }

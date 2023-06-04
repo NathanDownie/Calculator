@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,26 +26,23 @@ import androidx.compose.ui.unit.sp
 import com.ndcoding.ndccalculator.functions.CalculatorAction
 import com.ndcoding.ndccalculator.functions.CalculatorOperation
 import com.ndcoding.ndccalculator.functions.CalculatorState
-import com.ndcoding.ndccalculator.theme.Black
 import com.ndcoding.ndccalculator.theme.Blue
 import com.ndcoding.ndccalculator.theme.Green
 import com.ndcoding.ndccalculator.theme.Purple
 import com.ndcoding.ndccalculator.theme.Red
 import com.ndcoding.ndccalculator.theme.Typography
-import com.ndcoding.ndccalculator.theme.White
 import com.ndcoding.ndccalculator.theme.Yellow
 
 @Composable
 fun Calculator(
     state: CalculatorState,
     buttonSpacing: Dp = 0.dp,
-    onAction: (CalculatorAction) -> Unit
+    ignoredOnAction: (CalculatorAction) -> Unit
 ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Black)
-
+            .background(Color.Black)
     ) {
         Box(
             modifier = Modifier
@@ -54,32 +52,28 @@ fun Calculator(
                 .background(Color.Black)
         ) {
             Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Bottom
+                modifier = Modifier.fillMaxSize()
             ) {
                 val expression = if (state.showParentheses) {
-                    "(${state.number1}${state.operation?.symbol ?: ""}${state.number2})"
+                    "(${state.number1}${state.operation?.ignoredSymbol ?: ""}${state.number2})"
                 } else {
-                    "${state.number1}${state.operation?.symbol ?: ""}${state.number2}"
+                    "${state.number1}${state.operation?.ignoredSymbol ?: ""}${state.number2}"
                 }
 
                 Text(
                     text = expression,
                     textAlign = TextAlign.End,
-                    modifier = Modifier.padding(vertical = 32.dp),
                     style = Typography.h3,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 80.sp,
-                    color = White,
-                    maxLines = 2
+                    fontSize = 50.sp,
+                    color = Color.White,
+                    modifier = Modifier.wrapContentWidth()
                 )
 
 
 
                 Spacer(modifier = Modifier.weight(1f))
-
-
-// Row 1
+ // Row 1
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
@@ -89,35 +83,35 @@ fun Calculator(
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Blue, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.MemoryClear) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.MemoryClear) }
                     )
                     CalculatorButton(
                         symbol = "MR",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Blue, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.MemoryRecall) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.MemoryRecall) }
                     )
                     CalculatorButton(
                         symbol = "MS",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Blue, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.MemoryStore) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.MemoryStore) }
                     )
                     CalculatorButton(
                         symbol = "M+",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Blue, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.MemoryAdd) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.MemoryAdd) }
                     )
                     CalculatorButton(
                         symbol = "M-",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Blue, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.MemorySubtract) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.MemorySubtract) }
                     )
                 }
 
@@ -131,28 +125,28 @@ fun Calculator(
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Delete) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Delete) }
                     )
                     CalculatorButton(
                         symbol = "CE",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Clear) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
                     )
                     CalculatorButton(
                         symbol = "C",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Clear) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
                     )
                     CalculatorButton(
                         symbol = "+",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Yellow, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Operation(CalculatorOperation.Add)) } //                     )
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Operation(CalculatorOperation.Add)) } //                     )
 
                     )
                     CalculatorButton(
@@ -160,7 +154,7 @@ fun Calculator(
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.SquareRoot) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.SquareRoot) }
                     )
                 }
 
@@ -174,35 +168,35 @@ fun Calculator(
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(7)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(7)) }
                     )
                     CalculatorButton(
                         symbol = "8",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(8)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(8)) }
                     )
                     CalculatorButton(
                         symbol = "9",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(9)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(9)) }
                     )
                     CalculatorButton(
                         symbol = "/",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Yellow, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Operation(CalculatorOperation.Divide)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Operation(CalculatorOperation.Divide)) }
                     )
                     CalculatorButton(
                         symbol = "%",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Percentage) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Percentage) }
                     )
                 }
 
@@ -216,35 +210,35 @@ fun Calculator(
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(4)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(4)) }
                     )
                     CalculatorButton(
                         symbol = "5",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(5)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(5)) }
                     )
                     CalculatorButton(
                         symbol = "6",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(6)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(6)) }
                     )
                     CalculatorButton(
                         symbol = "X",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Yellow, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Operation(CalculatorOperation.Multiply)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Operation(CalculatorOperation.Multiply)) }
                     )
                     CalculatorButton(
                         symbol = "1/x",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Reciprocal) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Reciprocal) }
                     )
                 }
 
@@ -258,35 +252,35 @@ fun Calculator(
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(1)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(1)) }
                     )
                     CalculatorButton(
                         symbol = "2",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(2)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(2)) }
                     )
                     CalculatorButton(
                         symbol = "3",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(3)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(3)) }
                     )
                     CalculatorButton(
                         symbol = "-",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Yellow, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Operation(CalculatorOperation.Subtract)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Operation(CalculatorOperation.Subtract)) }
                     )
                     CalculatorButton(
                         symbol = "+/-",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.ToggleSign) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.ToggleSign) }
                     )
                 }
 
@@ -300,28 +294,28 @@ fun Calculator(
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Decimal) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Decimal) }
                     )
                     CalculatorButton(
                         symbol = "0",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Green, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Number(0)) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Number(0)) }
                     )
                     CalculatorButton(
                         symbol = "()",
                         modifier = Modifier
                             .weight(1f)
                             .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Parentheses) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Parentheses) }
                     )
 
                     RectangleCalculatorButton(
                         symbol = "=",
                         modifier = Modifier.weight(2f)
                             .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        onClick = { onAction(CalculatorAction.Calculate) }
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Calculate) }
                     )
 
 

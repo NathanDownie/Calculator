@@ -1,6 +1,6 @@
 package com.ndcoding.ndccalculator.functions
 
-sealed class CalculatorOperation(val symbol: String) {
+sealed class CalculatorOperation(val ignoredSymbol: String) {
     object Add: CalculatorOperation("+")
     object Subtract: CalculatorOperation("-")
     object Multiply: CalculatorOperation("x")
