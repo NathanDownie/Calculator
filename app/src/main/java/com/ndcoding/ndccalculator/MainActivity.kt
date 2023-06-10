@@ -27,13 +27,11 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             NDCCalculatorTheme {
-                // Rest of your code...
                 val navController = rememberNavController()
                 val viewModel = viewModel<CalculatorViewModel>()
                 val state = viewModel.state
                 val buttonSpacing = 2.dp
 
-                // Rest of your code...
                 NavHost(navController, startDestination = "Calculator") {
                     composable("Calculator") {
                         Calculator(
@@ -63,8 +61,6 @@ class MainActivity : ComponentActivity() {
                                 buttonSpacing = buttonSpacing,
                             )
                         }
-
-
                         composable("Calculator") {
                             Calculator(
                                 state = state,

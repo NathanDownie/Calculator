@@ -43,6 +43,7 @@ fun Calculator(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
+            .padding(8.dp)
     ) {
         Box(
             modifier = Modifier

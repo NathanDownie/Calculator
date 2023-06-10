@@ -1,6 +1,7 @@
 package com.ndcoding.ndccalculator.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
@@ -25,7 +26,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
-
 @Composable
 fun CalculatorAppBar(navController: NavController) {
     var expandedState by remember { mutableStateOf(false) }
@@ -38,7 +38,7 @@ fun CalculatorAppBar(navController: NavController) {
         modifier = Modifier
             .background(Color.Black)
             .fillMaxWidth()
-            .padding(top = 8.dp, bottom = 8.dp)
+            .padding(top = 0.dp, bottom = 0.dp)
     ) {
         IconButton(
             onClick = { expandedState = !expandedState },
@@ -52,11 +52,11 @@ fun CalculatorAppBar(navController: NavController) {
                 tint = Color.White
             )
         }
-            Text(
-                text = pageTitle,
-                color = Color.White,
-                modifier = Modifier.padding(start = 40.dp, top = 3.dp, end = 0.dp, bottom = 0.dp)
-            )
+        Text(
+            text = pageTitle,
+            color = Color.White,
+            modifier = Modifier.padding(start = 40.dp, top = 3.dp)
+        )
 
 
         Box(
@@ -67,7 +67,8 @@ fun CalculatorAppBar(navController: NavController) {
                 onDismissRequest = { expandedState = false },
                 modifier = Modifier
                     .padding(start = 8.dp, top = 8.dp)
-                    .background(Color.White, RoundedCornerShape(16.dp))
+                    .border(2.dp, Color.Green, shape = RoundedCornerShape(16.dp))
+                    .background(Color.Black, RoundedCornerShape(16.dp))
                     .align(Alignment.CenterEnd)
             ) {
                 menuItems.forEachIndexed { index, item ->
@@ -92,7 +93,7 @@ fun CalculatorAppBar(navController: NavController) {
                             }
                         }
                     ) {
-                        Text(text = item)
+                        Text(text = item, color = Color.White)
                     }
                 }
             }

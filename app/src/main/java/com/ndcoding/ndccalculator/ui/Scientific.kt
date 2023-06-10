@@ -28,8 +28,12 @@ import com.ndcoding.ndccalculator.functions.CalculatorOperation
 import com.ndcoding.ndccalculator.functions.CalculatorState
 import com.ndcoding.ndccalculator.theme.Blue
 import com.ndcoding.ndccalculator.theme.Green
+import com.ndcoding.ndccalculator.theme.LightGreen
+import com.ndcoding.ndccalculator.theme.Orange
+import com.ndcoding.ndccalculator.theme.Pink
 import com.ndcoding.ndccalculator.theme.Purple
 import com.ndcoding.ndccalculator.theme.Red
+import com.ndcoding.ndccalculator.theme.Teal
 import com.ndcoding.ndccalculator.theme.Typography
 import com.ndcoding.ndccalculator.theme.Yellow
 
@@ -73,151 +77,153 @@ fun ScientificCalculator(
 
 
                 Spacer(modifier = Modifier.weight(1f))
-                // Row 1
+// Row 1
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
                 ) {
-                    ScientificCalculatorButton(
-                        symbol = "abs",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Delete) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "acos",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "asin",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "atan",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Yellow, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Operation(CalculatorOperation.Add)) } //                     )
-
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "cbrt",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.SquareRoot) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "ceil",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.SquareRoot) }
-                    )
-                }
-                Row(
-                    Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-                ) {
-                    ScientificCalculatorButton(
-                        symbol = "cos",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Delete) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "cosh",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "exp",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "floor",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Yellow, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Operation(CalculatorOperation.Add)) } //                     )
-
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "log",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.SquareRoot) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "log2",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.SquareRoot) }
-                    )
-                }
-                Row(
-                    Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
-                ) {
-                    ScientificCalculatorButton(
-                        symbol = "log10",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Delete) }
-                    )
                     ScientificCalculatorButton(
                         symbol = "sin",
                         modifier = Modifier
                             .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Sin) }
                     )
                     ScientificCalculatorButton(
-                        symbol = "sinh",
+                        symbol = "cos",
                         modifier = Modifier
                             .weight(1f)
-                            .border(width = 2.dp, color = Red, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Clear) }
-                    )
-                    ScientificCalculatorButton(
-                        symbol = "sqrt",
-                        modifier = Modifier
-                            .weight(1f)
-                            .border(width = 2.dp, color = Yellow, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Operation(CalculatorOperation.Add)) } //                     )
-
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Cos) }
                     )
                     ScientificCalculatorButton(
                         symbol = "tan",
                         modifier = Modifier
                             .weight(1f)
-                            .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.SquareRoot) }
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Tan) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "log",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Teal, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Log) }                     )
+
+                    ScientificCalculatorButton(
+                        symbol = "cbrt",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Pink, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Cbrt) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "ceil",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = LightGreen, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Ceil) }
+                    )
+                }
+//Row 2
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
+                ) {
+                    ScientificCalculatorButton(
+                        symbol = "asin",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Asin) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "acos",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Acos) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "atan",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Atan) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "log2",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Teal, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Log2) }                     )
+
+
+                    ScientificCalculatorButton(
+                        symbol = "abs",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Pink, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Abs) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "floor",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = LightGreen, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Floor) }
+                    )
+                }
+//Row 3
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
+                ) {
+                    ScientificCalculatorButton(
+                        symbol = "sinh",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Tanh) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "cosh",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Cosh) }
                     )
                     ScientificCalculatorButton(
                         symbol = "tanh",
                         modifier = Modifier
                             .weight(1f)
-                            .border(width = 2.dp, color = Purple, RoundedCornerShape(16.dp)),
-                        ignoredOnClick = { ignoredOnAction(CalculatorAction.SquareRoot) }
+                            .border(width = 2.dp, color = Orange, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Tanh) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "log10",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Teal, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Log10) }                     )
+
+
+                    ScientificCalculatorButton(
+                        symbol = "sqrt",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Pink, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Sqrt) }
+                    )
+                    ScientificCalculatorButton(
+                        symbol = "exp",
+                        modifier = Modifier
+                            .weight(1f)
+                            .border(width = 2.dp, color = Pink, RoundedCornerShape(16.dp)),
+                        ignoredOnClick = { ignoredOnAction(CalculatorAction.Exp) }
                     )
                 }
+//Row 4
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
@@ -259,7 +265,7 @@ fun ScientificCalculator(
                     )
                 }
 
-// Row 2
+// Row 5
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
@@ -302,7 +308,7 @@ fun ScientificCalculator(
                     )
                 }
 
-// Row 3
+//Row 6
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
@@ -344,7 +350,7 @@ fun ScientificCalculator(
                     )
                 }
 
-// Row 4
+//Row 7
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
@@ -386,7 +392,7 @@ fun ScientificCalculator(
                     )
                 }
 
-// Row 5
+//Row 8
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
@@ -428,7 +434,7 @@ fun ScientificCalculator(
                     )
                 }
 
-// Row 6
+//Row 9
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(buttonSpacing)

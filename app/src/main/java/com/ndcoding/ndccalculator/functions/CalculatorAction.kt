@@ -19,5 +19,25 @@ sealed class CalculatorAction {
     object MemoryStore: CalculatorAction()
     object MemoryAdd: CalculatorAction()
     object MemorySubtract: CalculatorAction()
+
+    // Scientific Functions
+    object Abs: CalculatorAction()
+    object Acos: CalculatorAction()
+    object Asin: CalculatorAction()
+    object Atan: CalculatorAction()
+    object Cbrt: CalculatorAction()
+    object Ceil: CalculatorAction()
+    object Cos: CalculatorAction()
+    object Cosh: CalculatorAction()
+    object Exp: CalculatorAction()
+    object Floor: CalculatorAction()
+    object Log: CalculatorAction()
+    object Log2: CalculatorAction()
+    object Log10: CalculatorAction()
+    object Sin: CalculatorAction()
+    object Sinh: CalculatorAction()
+    object Sqrt: CalculatorAction()
+    object Tan: CalculatorAction()
+    object Tanh: CalculatorAction()
 }
 

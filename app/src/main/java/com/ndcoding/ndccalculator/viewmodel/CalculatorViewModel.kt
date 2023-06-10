@@ -7,6 +7,20 @@ import androidx.lifecycle.ViewModel
 import com.ndcoding.ndccalculator.functions.CalculatorAction
 import com.ndcoding.ndccalculator.functions.CalculatorOperation
 import com.ndcoding.ndccalculator.functions.CalculatorState
+import java.lang.Math.cbrt
+import kotlin.math.absoluteValue
+import kotlin.math.acos
+import kotlin.math.asin
+import kotlin.math.atan
+import kotlin.math.cosh
+import kotlin.math.ln
+import kotlin.math.log10
+import kotlin.math.log2
+import kotlin.math.sin
+import kotlin.math.sinh
+import kotlin.math.sqrt
+import kotlin.math.tan
+import kotlin.math.tanh
 
 class CalculatorViewModel: ViewModel() {
     var state by mutableStateOf(CalculatorState())
@@ -31,9 +45,155 @@ class CalculatorViewModel: ViewModel() {
             is CalculatorAction.MemoryAdd -> performMemoryAdd()
             is CalculatorAction.MemorySubtract -> performMemorySubtract()
             is CalculatorAction.Parentheses -> state = state.copy(showParentheses = !state.showParentheses)
+            is CalculatorAction.Abs -> performAbs()
+            is CalculatorAction.Acos -> performAcos()
+            is CalculatorAction.Asin -> performAsin()
+            is CalculatorAction.Atan -> performAtan()
+            is CalculatorAction.Cbrt -> performCbrt()
+            is CalculatorAction.Ceil -> performCeil()
+            is CalculatorAction.Cos -> performCos()
+            is CalculatorAction.Cosh -> performCosh()
+            is CalculatorAction.Exp -> performExp()
+            is CalculatorAction.Floor -> performFloor()
+            is CalculatorAction.Log -> performLog()
+            is CalculatorAction.Log10 -> performLog10()
+            is CalculatorAction.Log2 -> performLog2()
+            is CalculatorAction.Sin -> performSin()
+            is CalculatorAction.Sinh -> performSinh()
+            is CalculatorAction.Sqrt -> performSqrt()
+            is CalculatorAction.Tan -> performTan()
+            is CalculatorAction.Tanh -> performTanh()
+        }
+    }
+//Advanced Functions
+    private fun performAbs() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = number1.absoluteValue.toString())
         }
     }
 
+    private fun performAcos() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = acos(number1).toString())
+        }
+    }
+    private fun performAsin() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = asin(number1).toString())
+        }
+    }
+
+    private fun performAtan() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = atan(number1).toString())
+        }
+    }
+
+    private fun performCbrt() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = cbrt(number1).toString())
+        }
+    }
+
+    private fun performCeil() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = kotlin.math.ceil(number1).toString())
+        }
+    }
+
+    private fun performCos() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = kotlin.math.cos(number1).toString())
+        }
+    }
+
+    private fun performCosh() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = cosh(number1).toString())
+        }
+    }
+
+    private fun performExp() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = kotlin.math.exp(number1).toString())
+        }
+    }
+
+    private fun performFloor() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = kotlin.math.floor(number1).toString())
+        }
+    }
+
+    private fun performLog() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = ln(number1).toString())
+        }
+    }
+
+    private fun performLog10() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = log10(number1).toString())
+        }
+    }
+
+    private fun performLog2() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = log2(number1).toString())
+        }
+    }
+
+    private fun performSin() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = sin(number1).toString())
+        }
+    }
+
+    private fun performSinh() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = sinh(number1).toString())
+        }
+    }
+
+    private fun performSqrt() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = sqrt(number1).toString())
+        }
+    }
+
+    private fun performTan() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = tan(number1).toString())
+        }
+    }
+
+    private fun performTanh() {
+        val number1 = state.number1.toDoubleOrNull()
+        if (number1 != null) {
+            state = state.copy(number1 = tanh(number1).toString())
+        }
+    }
+
+
+
+//Delete
     private fun performDeletion() {
         when {
             state.number2.isNotBlank() -> state = state.copy(
@@ -73,7 +233,7 @@ class CalculatorViewModel: ViewModel() {
     private fun calculateSquareRoot() {
         val number1 = state.number1.toDoubleOrNull()
         if (number1 != null) {
-            val result = kotlin.math.sqrt(number1)
+            val result = sqrt(number1)
             state = state.copy(
                 number1 = result.toString().take(15),
                 number2 = "",
@@ -106,7 +266,7 @@ class CalculatorViewModel: ViewModel() {
             )
         }
     }
-
+//Memory Functions
 
     private fun performMemoryClear() {
         memoryValue = "0"
